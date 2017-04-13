@@ -1,0 +1,10 @@
+/*Write all of your CSS here*/
+*{
+    font-family: monospace;
+}
+.form-group{
+    width: 200px;
+}
+    .form-group label{
+        margin-right: 10px;
+    }
