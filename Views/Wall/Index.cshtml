@@ -17,14 +17,13 @@
         @Html.Partial(
             "CommentForm", 
             @Model.NewComment, 
-            new ViewDataDictionary(this.ViewData) {{ "messageId", @message.ID }})
+            new ViewDataDictionary(this.ViewData) {{ "messageId", @message.ID} })
         @foreach(var comment in @Model.AllComments)
         {
             @if(message.ID == comment.MessageId)
             {
                 @Html.Partial("WallComment", @comment)
             }
-
         }
     }
 </div>
