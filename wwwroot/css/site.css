@@ -1,10 +1,79 @@
-/*Write all of your CSS here*/
-*{
-    font-family: monospace;
+/****************************************
+GLOBAL SHIT
+****************************************/
+:root{
+    --main-text-color: rgb(0,250,0);
+    --form-background-color:  #2b242b;
+    --comment-background-color:  #544754;
 }
+body{
+    background-color: black;
+}
+#container{
+    text-align: center;
+}
+
+h1, h2, h3, label, h4{
+    color: var(--main-text-color);
+}
+input {
+    background-color: #555555;
+    color: #202020;
+    font-weight: bold;
+}
+/*
+**********************
+LOG/REG FORM STUFF
+***********************/
+.form-wrapper{
+    display: inline-block;
+    vertical-align: top;
+}
+form{
+    background-color: var(--form-background-color);
+    display: inline-block;
+}
+    .form-button{
+        background-color: #4b42bd;
+        color: #cdcdcd;
+        font-weight: bold;
+    }
 .form-group{
     width: 200px;
+    margin: 3px;
 }
     .form-group label{
-        margin-right: 10px;
+        margin-right: 15px;
+    }
+    .form-group span{
+        color: salmon;
+        font-weight: bold;
+        display: block;
+    }
+
+/*
+**********************
+WALL POST
+***********************/
+.wall-post{
+    background-color: var(--form-background-color);
+    width: 400px;
+    margin: 10px;
+    padding: 10px;
+}
+    .wall-post h3, h4{
+        display: inline-block;
+    }
+.comment-form{
+    margin: 10px;
+    padding: 10px;
+}
+.wall-comment{
+    background-color: var(--comment-background-color);
+    width: 380px;
+    margin: 10px 30px;
+    padding: 10px;
+}
+    .wall-comment h3, h4{
+        display: inline-block;
     }

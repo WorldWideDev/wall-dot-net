@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Mvc.ViewFeatures
+@model Wall.Models.WallModelBundle
+<div class="container">
+    <h2>Welcome, @Model.UserModel.FirstName,  to the WALL</h2>
+    <hr>
+    <h3>Post a new message to the WALL</h3>
+    @Html.Partial("PostForm", @Model.NewMessage)
+    <hr>
+    <h1>The WALL</h1>
+    @foreach(var message in @Model.AllPosts)
+    {
+        @Html.Partial("WallPost", @message,
+            new ViewDataDictionary(this.ViewData) {{ "currUserId", @Model.UserModel.ID }})
+        @Html.Partial(
+            "CommentForm", 
+            @Model.NewComment, 
+            new ViewDataDictionary(this.ViewData) {{ "messageId", @message.ID }})
+        @foreach(var comment in @Model.AllComments)
+        {
+            @if(message.ID == comment.MessageId)
+            {
+                @Html.Partial("WallComment", @comment)
+            }
+
+        }
+    }
+</div>

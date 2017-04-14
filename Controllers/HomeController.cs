@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using LoginReg.Models;
+using Wall.Models;
 using Microsoft.AspNetCore.Session;
 using Microsoft.AspNetCore.Http;
 
-namespace LoginReg.Controllers
+namespace Wall.Controllers
 {
     public class HomeController : Controller
     {
@@ -36,7 +36,7 @@ namespace LoginReg.Controllers
                 List<Dictionary<string, object>> newGuy = _dbConnector.Query($"SELECT id FROM users WHERE email = '{user.Email}'");
                 System.Console.WriteLine(newGuy[0]["id"]);
                 HttpContext.Session.SetInt32("id", (int)newGuy[0]["id"]);
-                return RedirectToAction("Success");
+                return RedirectToAction("Index", "Wall");
             }
             else
             {
@@ -45,33 +45,35 @@ namespace LoginReg.Controllers
         }
 
         [HttpPostAttribute]
-        [RouteAttribute("login")]
-        public IActionResult Login(User user)
+        [RouteAttribute("sup")]
+        public IActionResult Login(LogUser user)
         {
+            System.Console.WriteLine("login method");
+            System.Console.WriteLine(user);
             // if password matches user with email, redirect to success
-            List<Dictionary<string, object>> query = _dbConnector.Query($"SELECT password, id FROM users WHERE email = '{user.Email}'");
-            if(query.Count < 1 || user.Password != (string)query[0]["password"])
+            List<Dictionary<string, object>> query = _dbConnector.Query($"SELECT password, id FROM users WHERE email = '{user.LogEmail}'");
+            if(query.Count < 1 || user.LogPassword != (string)query[0]["password"])
             {
                 return View("Index");
             }
             // else return with view
             HttpContext.Session.SetInt32("id", (int)query[0]["id"]);
-            return RedirectToAction("Success");
+            return RedirectToAction("Index", "Wall");
             
         }
         
 
-        [HttpGetAttribute]
-        [RouteAttribute("success")]
-        public IActionResult Success()
-        {
-            int id = (int)HttpContext.Session.GetInt32("id");
-            List<Dictionary<string, object>> query = _dbConnector.Query($"SELECT first_name FROM users WHERE id = {id}");
-            User theUser = new User
-            {
-                FirstName = (string)query[0]["first_name"]
-            };
-            return View(theUser);
-        }
+        // [HttpGetAttribute]
+        // [RouteAttribute("success")]
+        // public IActionResult Success()
+        // {
+        //     int id = (int)HttpContext.Session.GetInt32("id");
+        //     List<Dictionary<string, object>> query = _dbConnector.Query($"SELECT first_name FROM users WHERE id = {id}");
+        //     User theUser = new User
+        //     {
+        //         FirstName = (string)query[0]["first_name"]
+        //     };
+        //     return View(theUser);
+        // }
     }
 }

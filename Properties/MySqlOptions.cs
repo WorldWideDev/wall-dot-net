@@ -1,4 +1,4 @@
-namespace LoginReg
+namespace Wall
 {
     public class MySqlOptions
     {

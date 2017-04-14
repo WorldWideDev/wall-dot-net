@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 using MySql.Data;
 using MySql.Data.MySqlClient;
  
-namespace LoginReg
+namespace Wall
 {
     public class DbConnector
     {

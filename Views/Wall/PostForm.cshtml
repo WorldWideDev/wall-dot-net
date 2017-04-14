@@ -1,0 +1,11 @@
+@model Wall.Models.Message
+<p>this user id is @Model.UserId</p>
+<form asp-controller="Wall" asp-action="NewPost" method="post">
+    <div class="form-group">
+        <span asp-validation-for="Content"></span>
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content"></textarea>
+        <input type="hidden" value=@Model.UserId asp-for="UserId">
+    </div>
+    <button type="submit" class="form-button">POST</button>
+</form>

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using LoginReg.Validators;
-namespace LoginReg.Models
+using Wall.Validators;
+namespace Wall.Models
 {
     public abstract class BaseEntity
     {

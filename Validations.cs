@@ -1,11 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using LoginReg.Models;
+using Wall.Models;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace LoginReg.Validators
+namespace Wall.Validators
 {
     public class UserExistsAttribute : ValidationAttribute
     {

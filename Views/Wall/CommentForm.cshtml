@@ -1,0 +1,11 @@
+@model Wall.Models.Comment
+<form class="comment-form" asp-controller="Wall" asp-action="NewComment" method="post">
+    <div class="form-group">
+        <span asp-validation-for="Content"></span>
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content"></textarea>
+        <input type="hidden" value=@Model.UserId asp-for="UserId">
+        <input type="hidden" value=@ViewData["messageId"] asp-for="MessageId">
+    </div>
+    <button type="submit" class="form-button">Comment</button>
+</form>

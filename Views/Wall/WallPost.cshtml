@@ -1,0 +1,10 @@
+@model Wall.Models.Message
+<div class="wall-post">
+    <h3>@Model.Content</h3>
+    <h4>- @Model.FirstName</h4>
+    <h5>@Model.UpdatedAt</h5>
+    @if((int)@ViewData["currUserId"] == @Model.UserId)
+    {
+        <a href="delete/@Model.ID" class="delete-button">DEL</a>
+    }
+</div>
