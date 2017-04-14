@@ -43,8 +43,7 @@ namespace Wall.Controllers
                                         DELETE FROM posts WHERE id = {postId}";
                 _dbConnector.Execute(deleteQuery);
             } else { System.Console.WriteLine("NAIUGHT NAUGHTY"); }
-
-            WallModelBundle bundle = GetWallBundle(id);
+            
             return RedirectToAction("Index");
         }
 
